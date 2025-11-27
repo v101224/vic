@@ -175,7 +175,7 @@
       <div class="carousel-track" id="track">
         <div class="slide">
           <img src="images/diciembre.jpg" alt="foto1">
-          <p>✨ Los ojitos que me enamoraron.</p>
+          <p>✨ Los ojitos que me enamoraron</p>
         </div>
 
         <div class="slide">
@@ -354,8 +354,15 @@ function moveToIndex(i, animate = true) {
 //  EVENTOS DE GESTOS
 // ----------------------------
 
-track.addEventListener('touchstart', e => touchStart(e.touches[0].clientX), { passive: true });
-track.addEventListener('touchmove', e => touchMove(e.touches[0].clientX), { passive: true });
+track.addEventListener('touchstart', e => {
+    e.preventDefault();
+    touchStart(e.touches[0].clientX);
+});
+track.addEventListener('touchmove', e => {
+    e.preventDefault();
+    touchMove(e.touches[0].clientX);
+});
+
 track.addEventListener('touchend', e => touchEnd(e.changedTouches[0].clientX));
 
 track.addEventListener('mousedown', e => { e.preventDefault(); touchStart(e.clientX); });
