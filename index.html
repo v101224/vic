@@ -17,9 +17,7 @@
       justify-content: center;
       font-family: "Poppins", sans-serif;
       transition: background 2s ease;
-      touch-action: none;
     }
-
 
     .scene {
       position: relative;
@@ -98,8 +96,40 @@
       width: 100%;
       height: calc(100vh - 180px);
       position: relative;
-      /*touch-action: pan-y;*/
+      touch-action: pan-y;
     }
+
+    .nav-btn {
+  position: absolute;
+  top: 50%; /* Centra verticalmente */
+  transform: translateY(-50%);
+  background: rgba(178, 31, 102, 0.7); /* Fondo semi-transparente del color del tema */
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  z-index: 10; /* Asegura que estén por encima del carrusel */
+  transition: background 0.3s, opacity 0.3s;
+}
+
+.nav-btn:hover {
+  background: #8b1450;
+}
+
+.nav-btn:disabled {
+  opacity: 0.5; /* Opacidad reducida cuando están deshabilitados */
+  cursor: default;
+}
+
+.prev-btn {
+  left: 10px;
+}
+
+.next-btn {
+  right: 10px;
+}
 
     .carousel-track {
       display: flex;
@@ -120,10 +150,6 @@
       justify-content: center;
       text-align: center;
       padding: 10px;
-    }
-    .slide video {
-      pointer-events: none !important;
-      touch-action: none !important;
     }
 
     .slide img, .slide video {
@@ -161,6 +187,42 @@
       font-size: 0.8rem;
       margin-bottom: 10px;
     }
+.nav-btn {
+  position: absolute;
+  top: 80%;
+  transform: translateY(-50%);
+  background: rgba(178, 31, 102, 0.7); /* Fondo semi-transparente del color del tema */
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: bold;
+  z-index: 10;
+  transition: background 0.3s, opacity 0.3s;
+  user-select: none; /* Evita la selección de texto */
+  -webkit-tap-highlight-color: transparent; /* Mejora la experiencia móvil */
+}
+
+.nav-btn:hover {
+  background: #8b1450;
+}
+
+.nav-btn:disabled {
+  opacity: 0.3; /* Opacidad reducida cuando están deshabilitados */
+  cursor: default;
+}
+
+.prev-btn {
+  left: 10px;
+}
+
+.next-btn {
+  right: 10px;
+}
+/* --------------------------------------------- */
+
   </style>
 </head>
 <body>
@@ -174,212 +236,243 @@
     <p>Por muchos m&aacute;s juntitos.</p>
 
     <div class="carousel" id="carousel">
-      <div class="carousel-track" id="track">
-        <div class="slide">
-          <img src="images/diciembre.jpg" alt="foto1">
-          <p>✨ Los ojitos que me enamoraron</p>
-        </div>
+        <button id="prevBtn" class="nav-btn prev-btn"><</button>
+        <button id="nextBtn" class="nav-btn next-btn">></button>
 
-        <div class="slide">
-          <video src="images/enero.mp4" autoplay muted loop playsinline></video>
-          <p>🌹 Como no enamorarme con esos ojitos</p>
-        </div>
+        <div class="carousel-track" id="track">
+            <div class="slide">
+                <img src="images/diciembre.jpg" alt="foto1">
+                <p>✨ Los ojitos que me enamoraron</p>
+            </div>
 
-        <div class="slide">
-          <video src="images/febrero.mp4" autoplay muted loop playsinline></video>
-          <p>💋 Cada d&iacute;a me dan m&aacute;s ganas de besar esa boquita</p>
-        </div>
+            <div class="slide">
+                <video src="images/enero.mp4" autoplay muted loop playsinline></video>
+                <p>🌹 Como no enamorarme con esos ojitos</p>
+            </div>
 
-        <div class="slide">
-          <video src="images/marzo.mp4" autoplay muted loop playsinline></video>
-          <p>💞 No hay paisaje m&aacute;s hermoso que tu cuerpo</p>
-        </div>
+            <div class="slide">
+                <video src="images/febrero.mp4" autoplay muted loop playsinline></video>
+                <p>💋 Cada d&iacute;a me dan m&aacute;s ganas de besar esa boquita</p>
+            </div>
 
-        <div class="slide">
-          <img src="images/abril.jpg">
-          <p>🥰 Todav&iacute;a me pongo nervioso al verte</p>
-        </div>
+            <div class="slide">
+                <video src="images/marzo.mp4" autoplay muted loop playsinline></video>
+                <p>💞 No hay paisaje m&aacute;s hermoso que tu cuerpo</p>
+            </div>
 
-        <div class="slide">
-          <video src="images/junio.mp4" autoplay muted loop playsinline></video>
-          <p>💘 Cada d&iacute;a me enamoro m&aacute;s de la hermosa persona que sos</p>
-        </div>
+            <div class="slide">
+                <img src="images/abril.jpg">
+                <p>🥰 Todav&iacute;a me pongo nervioso al verte</p>
+            </div>
 
-        <div class="slide">
-          <img src="images/julio.png">
-          <p>💋 Cada d&iacute;a me dan m&aacute;s ganas de besar esa boquita</p>
-        </div>
+            <div class="slide">
+                <video src="images/junio.mp4" autoplay muted loop playsinline></video>
+                <p>💘 Cada d&iacute;a me enamoro m&aacute;s de la hermosa persona que sos</p>
+            </div>
 
-        <div class="slide">
-          <img src="images/agosto.jpg">
-          <p>🌹 Cada vez que veo esa carita me roba el corazon</p>
-        </div>
+            <div class="slide">
+                <img src="images/julio.png">
+                <p>💋 Cada d&iacute;a me dan m&aacute;s ganas de besar esa boquita</p>
+            </div>
 
-        <div class="slide">
-          <img src="images/septiembre.jpg">
-          <p>❣ Me emociona cada uno de tus te amo</p>
-        </div>
+            <div class="slide">
+                <img src="images/agosto.jpg">
+                <p>🌹 Cada vez que veo esa carita me roba el corazon</p>
+            </div>
 
-        <div class="slide">
-          <img src="images/octubre.png">
-          <p>💫 Gracias por todos los momentos hermosos</p>
-        </div>
+            <div class="slide">
+                <img src="images/septiembre.jpg">
+                <p>❣ Me emociona cada uno de tus te amo</p>
+            </div>
 
-        <div class="slide">
-          <img src="images/noviembre.jpg">
-          <p>💕 Gracias por hacerme tan bien</p>
-        </div>
+            <div class="slide">
+                <img src="images/octubre.png">
+                <p>💫 Gracias por todos los momentos hermosos</p>
+            </div>
 
-        <div class="slide">
-          <img src="images/diciembre25.jpg">
-          <p>💝 Por muchos m&aacute;s momentos y a&ntilde;os a tu lado</p>
+            <div class="slide">
+                <img src="images/noviembre.jpg">
+                <p>💕 Gracias por hacerme tan bien</p>
+            </div>
+
+            <div class="slide">
+                <img src="images/diciembre25.jpg">
+                <p>💝 Por muchos m&aacute;s momentos y a&ntilde;os a tu lado</p>
+            </div>
         </div>
-      </div>
     </div>
-
     <button id="closeBtn">Cerrar</button>
-  </div>
+</div>
 
   <script>
     const lid = document.getElementById('lid');
-const inside = document.getElementById('inside');
-const scene = document.getElementById('scene');
-const closeBtn = document.getElementById('closeBtn');
+    const inside = document.getElementById('inside');
+    const scene = document.getElementById('scene');
+    const closeBtn = document.getElementById('closeBtn');
 
-scene.addEventListener('click', () => {
-  lid.classList.add('open');
-  setTimeout(() => { scene.classList.add('zoom-in'); }, 700);
+    // --- NUEVAS REFERENCIAS PARA LOS BOTONES ---
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    // -------------------------------------------
 
-  setTimeout(() => {
-    document.body.style.background = "white";
-    inside.classList.add('active');
-    moveToIndex(0, false);
-    playVideoAtIndex(0); // Asegura que al abrir no se reproduzcan videos
-  }, 2200);
-});
+    scene.addEventListener('click', () => {
+        lid.classList.add('open');
+        setTimeout(() => { scene.classList.add('zoom-in'); }, 700);
 
-closeBtn.addEventListener('click', () => {
-  inside.classList.remove('active');
-  document.body.style.background = "radial-gradient(circle at center, #ffd6e0 0%, #f0b3d1 100%)";
-  moveToIndex(0, false);
-  setTimeout(() => { scene.classList.remove('zoom-in'); lid.classList.remove('open'); }, 400);
-});
+        setTimeout(() => {
+            document.body.style.background = "white";
+            inside.classList.add('active');
+            moveToIndex(0, false);
+            playVideoAtIndex(0);
+        }, 2200);
+    });
 
-// ----------------------------
-//     CARRUSEL / SWIPE
-// ----------------------------
+    closeBtn.addEventListener('click', () => {
+        inside.classList.remove('active');
+        document.body.style.background = "radial-gradient(circle at center, #ffd6e0 0%, #f0b3d1 100%)";
+        moveToIndex(0, false);
+        setTimeout(() => { scene.classList.remove('zoom-in'); lid.classList.remove('open'); }, 400);
+    });
 
-const carousel = document.getElementById('carousel');
-const track = document.getElementById('track');
-const slides = Array.from(track.children);
+    // ----------------------------
+    //        CARRUSEL / SWIPE
+    // ----------------------------
 
-let index = 0, startX = 0, currentTranslate = 0, prevTranslate = 0;
-let dragging = false, animationFrameId = null;
+    const carousel = document.getElementById('carousel');
+    const track = document.getElementById('track');
+    const slides = Array.from(track.children);
 
-function getWidth() { return carousel.clientWidth; }
-function setTranslate(x, el = track) { el.style.transform = `translateX(${x}px)`; }
-function animation() {
-  setTranslate(currentTranslate);
-  animationFrameId = requestAnimationFrame(animation);
-}
+    let index = 0, startX = 0, currentTranslate = 0, prevTranslate = 0;
+    let dragging = false, animationFrameId = null;
 
-function touchStart(x) {
-  startX = x;
-  dragging = true;
-  prevTranslate = -index * getWidth();
-  currentTranslate = prevTranslate;
-  cancelAnimationFrame(animationFrameId);
-  animationFrameId = requestAnimationFrame(animation);
-}
-
-function touchMove(x) {
-  if (!dragging) return;
-  currentTranslate = prevTranslate + (x - startX);
-}
-
-function touchEnd(x) {
-  if (!dragging) return;
-  dragging = false;
-  cancelAnimationFrame(animationFrameId);
-
-  const moved = x - startX;
-  const t = getWidth() * 0.15;
-
-  if (moved < -t && index < slides.length - 1) index++;
-  else if (moved > t && index > 0) index--;
-
-  moveToIndex(index, true);
-}
-
-// ----------------------------
-//  REPRODUCCIÓN DE VIDEOS
-// ----------------------------
-
-function playVideoAtIndex(i) {
-  slides.forEach((slide, idx) => {
-    const v = slide.querySelector("video");
-    if (!v) return;
-
-    v.muted = true;
-    v.playsInline = true;
-
-    if (idx === i) {
-      v.play().catch(() => {});
-    } else {
-      v.pause();
-      v.currentTime = 0;
+    function getWidth() { return carousel.clientWidth; }
+    function setTranslate(x, el = track) { el.style.transform = `translateX(${x}px)`; }
+    function animation() {
+        setTranslate(currentTranslate);
+        animationFrameId = requestAnimationFrame(animation);
     }
-  });
-}
 
-function moveToIndex(i, animate = true) {
-  index = i;
-  const x = -index * getWidth();
+    function touchStart(x) {
+        startX = x;
+        dragging = true;
+        prevTranslate = -index * getWidth();
+        currentTranslate = prevTranslate;
+        cancelAnimationFrame(animationFrameId);
+        animationFrameId = requestAnimationFrame(animation);
+    }
 
-  track.style.transition = animate
-    ? 'transform 0.35s cubic-bezier(.22,.9,.27,1)'
-    : 'none';
+    function touchMove(x) {
+        if (!dragging) return;
+        currentTranslate = prevTranslate + (x - startX);
+    }
 
-  setTranslate(x);
+    function touchEnd(x) {
+        if (!dragging) return;
+        dragging = false;
+        cancelAnimationFrame(animationFrameId);
 
-  if (animate) {
-    track.addEventListener('transitionend', () => {
-      track.style.transition = 'none';
-      playVideoAtIndex(index);
-    }, { once: true });
-  } else {
-    playVideoAtIndex(index);
-  }
-}
+        const moved = x - startX;
+        const t = getWidth() * 0.15;
 
-// ----------------------------
-//  EVENTOS DE GESTOS
-// ----------------------------
+        if (moved < -t && index < slides.length - 1) index++;
+        else if (moved > t && index > 0) index--;
 
-track.addEventListener('touchstart', e => {
-    e.preventDefault();
-    touchStart(e.touches[0].clientX);
-});
-track.addEventListener('touchmove', e => {
-    e.preventDefault();
-    touchMove(e.touches[0].clientX);
-});
+        moveToIndex(index, true);
+    }
 
-track.addEventListener('touchend', e => touchEnd(e.changedTouches[0].clientX));
+    // ----------------------------
+    //      REPRODUCCIÓN DE VIDEOS Y BOTONES
+    // ----------------------------
 
-track.addEventListener('mousedown', e => { e.preventDefault(); touchStart(e.clientX); });
-window.addEventListener('mousemove', e => { if (dragging) touchMove(e.clientX); });
-window.addEventListener('mouseup', e => { if (dragging) touchEnd(e.clientX); });
+    function playVideoAtIndex(i) {
+        slides.forEach((slide, idx) => {
+            const v = slide.querySelector("video");
+            if (!v) return;
 
-window.addEventListener('resize', () => moveToIndex(index, false));
+            v.muted = true;
+            v.playsInline = true;
 
-slides.forEach(s => {
-  const img = s.querySelector('img');
-  if (img) img.addEventListener('dragstart', e => e.preventDefault());
-});
+            if (idx === i) {
+                // Tries to play, catches if the browser prevents it (e.g., policy)
+                v.play().catch(() => {});
+            } else {
+                v.pause();
+                v.currentTime = 0;
+            }
+        });
+    }
 
-// Iniciar posición
-moveToIndex(0, false);
-  </script>
+    // Función para habilitar/deshabilitar los botones de navegación
+    function updateNavButtons() {
+        prevBtn.disabled = index === 0;
+        nextBtn.disabled = index === slides.length - 1;
+    }
+
+    function moveToIndex(i, animate = true) {
+        index = i;
+        const x = -index * getWidth();
+
+        track.style.transition = animate
+            ? 'transform 0.35s cubic-bezier(.22,.9,.27,1)'
+            : 'none';
+
+        setTranslate(x);
+
+        if (animate) {
+            track.addEventListener('transitionend', () => {
+                track.style.transition = 'none';
+                playVideoAtIndex(index);
+            }, { once: true });
+        } else {
+            playVideoAtIndex(index);
+        }
+        
+        // Actualiza el estado de los botones
+        updateNavButtons();
+    }
+
+    // ----------------------------
+    //      EVENTOS DE GESTOS Y BOTONES
+    // ----------------------------
+
+    // Para evitar la navegación táctil accidental fuera del carrusel
+    track.addEventListener('touchstart', e => {
+        // Permitimos el default en el evento touchstart para que los videos puedan cargarse/reproducirse
+        touchStart(e.touches[0].clientX);
+    }, { passive: true }); // Usamos passive: true para que el navegador sepa que no bloquearemos el scroll
+    
+    // Aquí bloqueamos el default para asegurar que el movimiento sea de carrusel y no scroll
+    track.addEventListener('touchmove', e => {
+        // e.preventDefault(); // Si se usa preventDefault, se bloquea el scroll vertical. Ya lo maneja el CSS 'touch-action: none' en <body>.
+        touchMove(e.touches[0].clientX);
+    }, { passive: true });
+
+    track.addEventListener('touchend', e => touchEnd(e.changedTouches[0].clientX));
+
+    // Eventos de ratón para desktop
+    track.addEventListener('mousedown', e => { e.preventDefault(); touchStart(e.clientX); });
+    window.addEventListener('mousemove', e => { if (dragging) touchMove(e.clientX); });
+    window.addEventListener('mouseup', e => { if (dragging) touchEnd(e.clientX); });
+
+    window.addEventListener('resize', () => moveToIndex(index, false));
+
+    slides.forEach(s => {
+        const img = s.querySelector('img');
+        if (img) img.addEventListener('dragstart', e => e.preventDefault());
+    });
+
+    // --- LISTENERS PARA LOS BOTONES DE NAVEGACIÓN ---
+    prevBtn.addEventListener('click', () => {
+        if (index > 0) moveToIndex(index - 1, true);
+    });
+
+    nextBtn.addEventListener('click', () => {
+        if (index < slides.length - 1) moveToIndex(index + 1, true);
+    });
+    // ------------------------------------------------
+
+    // Iniciar posición y estado de botones
+    moveToIndex(0, false);
+</script>
 </body>
 </html>
